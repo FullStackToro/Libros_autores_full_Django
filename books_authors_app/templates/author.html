@@ -3,7 +3,6 @@
 
 <div class="row justify-content-start">
     <div class="main col-9 p-3 mx-auto justify-content-center">
-
         <h1>{{ authors.first_name}} {{ authors.last_name }}</h1><hr>
         <div class="d-flex-row">
             <h3 class="d-inline-block col-1">ID:</h3>
@@ -15,7 +14,6 @@
             {{ authors.note }}
             </p>
         </div>
-
         <div class="d-flex-row">
             <h3>Libros:</h3>
             <ul>
@@ -24,11 +22,9 @@
                 {% endfor %}
             </ul>
         </div>
-
-         <div class="d-flex-row">
+        <div class="d-flex-row">
             <form class="row row-cols-lg-auto g-3 align-items-center" action="/author/book_to_author/{{ authors.id }}" method="post">
-                {% csrf_token %}
-
+            {% csrf_token %}
                 <div class="col-8">
                     <label class="visually-hidden" for="inlineFormSelectPref">Preference</label>
                     <select class="form-select col-12" id="inlineFormSelectPref" name="select_book_to_author">
@@ -41,10 +37,9 @@
                         {% endfor %}
                     </select>
                 </div>
-
-              <div class="col-1">
+                <div class="col-1">
                 <button type="submit" class="btn btn-primary">Agregar</button>
-              </div>
+                </div>
 
             </form>
         </div>

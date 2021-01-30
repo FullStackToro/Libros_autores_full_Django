@@ -3,7 +3,6 @@
 {% block main %}
 
 <div class="main col-9 p-3 mx-auto justify-content-center">
-
     <h1>{{ books.title}}</h1><hr>
     <div class="d-flex-row">
         <h3 class="d-inline-block col-1">ID:</h3>
@@ -15,35 +14,32 @@
         {{ books.desc}}
         </p>
     </div>
-
     <div class="d-flex-row">
         <h3>Autor:</h3>
         <ul>
-        {% for autor in authors %}
-        <li>{{ autor.first_name }} {{ autor.last_name }}</li>
-        {% endfor %}
+            {% for autor in authors %}
+                <li>{{ autor.first_name }} {{ autor.last_name }}</li>
+            {% endfor %}
         </ul>
     </div>
-
     <div class="d-flex-row">
         <form class="row row-cols-lg-auto g-3 align-items-center" action="/book/author_to_book/{{ books.id }}" method="post">
         {% csrf_token %}
             <div class="col-8">
                 <label class="visually-hidden" for="inlineFormSelectPref">Preference</label>
                 <select class="form-select col-12" id="inlineFormSelectPref" name="author_to_book">
-                <option value="-1">*Seleccione un autor*</option>
-                {% for list_author in add_author %}
-                    {% if list_author in authors %}
-                    {% else %}
-                    <option value="{{ list_author.id }}">{{ list_author.first_name }} {{ list_author.last_name }}</option>
-                    {% endif %}
-                {% endfor %}
+                    <option value="-1">*Seleccione un autor*</option>
+                    {% for list_author in add_author %}
+                        {% if list_author in authors %}
+                        {% else %}
+                            <option value="{{ list_author.id }}">{{ list_author.first_name }} {{ list_author.last_name }}</option>
+                        {% endif %}
+                    {% endfor %}
                 </select>
             </div>
             <div class="col-1">
-            <button type="submit" class="btn btn-primary">Agregar</button>
+                <button type="submit" class="btn btn-primary">Agregar</button>
             </div>
-
         </form>
     </div>
 </div>
